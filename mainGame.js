@@ -1,31 +1,31 @@
 function preload() {
   // Load character image
   character = {
-    img: loadImage("/assets/character.png"),
+    img: loadImage("assets/character.png"),
     size: tileSize
   };
 
   // Load terrain images
-  terrainImages[terrainTypes.TREE] = loadImage("/assets/tree.png");
-  terrainImages[terrainTypes.MOUNTAIN] = loadImage("/assets/mountain.png");
-  terrainImages[terrainTypes.PATH_VERTICAL] = loadImage("/assets/vertical-path.png");
-  terrainImages[terrainTypes.PATH_HORIZONTAL] = loadImage("/assets/horizontal-path.png");
-  terrainImages[terrainTypes.BUILDING_SCHOOL] = loadImage("/assets/tibetan-school.png");
-  terrainImages[terrainTypes.BUILDING_COMMUNITY] = loadImage("/assets/tibetan-settlement.png");
-  terrainImages[terrainTypes.BUILDING_GOVT] = loadImage("/assets/CTA.png");
-  terrainImages[terrainTypes.BUILDING_UNI] = loadImage("/assets/tibetan-university.png");
-  terrainImages[terrainTypes.BUILDING_MONA] = loadImage("/assets/monastery.png");
-  terrainImages[terrainTypes.Q1_PATH] = loadImage("/assets/0-90-path.png");
-  terrainImages[terrainTypes.Q2_PATH] = loadImage("/assets/90-180-path.png");
-  terrainImages[terrainTypes.Q3_PATH] = loadImage("/assets/180-270-path.png");
-  terrainImages[terrainTypes.Q4_PATH] = loadImage("/assets/270-0-path.png");
-  terrainImages[terrainTypes.T_PATH] = loadImage("/assets/t-path.png");
-  terrainImages[terrainTypes.T1_PATH] = loadImage("/assets/t1-path.png");
+  terrainImages[terrainTypes.TREE] = loadImage("assets/tree.png");
+  terrainImages[terrainTypes.MOUNTAIN] = loadImage("assets/mountain.png");
+  terrainImages[terrainTypes.PATH_VERTICAL] = loadImage("assets/vertical-path.png");
+  terrainImages[terrainTypes.PATH_HORIZONTAL] = loadImage("assets/horizontal-path.png");
+  terrainImages[terrainTypes.BUILDING_SCHOOL] = loadImage("assets/tibetan-school.png");
+  terrainImages[terrainTypes.BUILDING_COMMUNITY] = loadImage("assets/tibetan-settlement.png");
+  terrainImages[terrainTypes.BUILDING_GOVT] = loadImage("assets/CTA.png");
+  terrainImages[terrainTypes.BUILDING_UNI] = loadImage("assets/tibetan-university.png");
+  terrainImages[terrainTypes.BUILDING_MONA] = loadImage("assets/monastery.png");
+  terrainImages[terrainTypes.Q1_PATH] = loadImage("assets/0-90-path.png");
+  terrainImages[terrainTypes.Q2_PATH] = loadImage("assets/90-180-path.png");
+  terrainImages[terrainTypes.Q3_PATH] = loadImage("assets/180-270-path.png");
+  terrainImages[terrainTypes.Q4_PATH] = loadImage("assets/270-0-path.png");
+  terrainImages[terrainTypes.T_PATH] = loadImage("assets/t-path.png");
+  terrainImages[terrainTypes.T1_PATH] = loadImage("assets/t1-path.png");
 
   // Poster Images
-  posterImages.freedom = loadImage("/assets/freedom-tibet.png");
-  posterImages.potala = loadImage("/assets/potala.png");
-  posterImages.flag = loadImage("/assets/tibetan-flag.png");
+  posterImages.freedom = loadImage("assets/freedom-tibet.png");
+  posterImages.potala = loadImage("assets/potala.png");
+  posterImages.flag = loadImage("assets/tibetan-flag.png");
 }
 
 function setup() {
