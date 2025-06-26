@@ -2,6 +2,50 @@
  * Draws the terrain map and the character on screen.
  * Handles 1x1 terrain tiles and 2x2 building tiles.
  */
+function drawStartScreen() {
+  if (startBgImage) {
+    background(startBgImage);
+  } else {
+    background(245); // fallback color
+  }
+
+  fill(30);
+  textAlign(CENTER, TOP);
+  textSize(28);
+  text("Journey of the Snowland", width / 2, 60);
+
+  textSize(16);
+  textAlign(LEFT, TOP);
+
+  const introText = `
+Welcome to *Journey of the Snowland*, an educational adventure game where you explore the life of a Tibetan exile. Travel through the village, visit core community institutions, and take part in cultural and civic tasks that reflect real-life experiences of Tibetans in exile. Learn, reflect, and contribute as you journey from school to monastery, from community to the Central Tibetan Administration.
+
+Are you ready to begin your journey?
+  `;
+
+  const boxX = width / 2 - 280;
+  const boxY = 120;
+  const boxW = 560;
+  const boxH = 220;
+
+  // ✅ Add translucent background box behind text
+  fill(255, 200); // white with slight transparency
+  noStroke();
+  rect(boxX - 10, boxY - 10, boxW + 20, boxH + 20, 12); // with padding and rounded corners
+
+  // ✅ Draw text on top
+  fill(30);
+  textLeading(24);
+  text(introText, boxX, boxY, boxW);
+
+  // Draw Start Button
+//  console.log(mouseX, mouseY); // in mousePressed
+
+  drawButton({ x: width / 2 - 60, y: height / 2 + 100, w: 120, h: 40 }, "Start Journey");
+}
+
+
+
 function drawMapScene() {
   for (let r = 0; r < mapRows; r++) {
     for (let c = 0; c < mapCols; c++) {
