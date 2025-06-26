@@ -4,8 +4,10 @@ function preload() {
     img: loadImage("assets/character.png"),
     size: tileSize
   };
+  
 
   // Load terrain images
+  startBgImage = loadImage("assets/start-bg.png"); // or .png, depending on your file
   terrainImages[terrainTypes.TREE] = loadImage("assets/tree.png");
   terrainImages[terrainTypes.MOUNTAIN] = loadImage("assets/mountain.png");
   terrainImages[terrainTypes.PATH_VERTICAL] = loadImage("assets/vertical-path.png");
@@ -54,6 +56,11 @@ function setup() {
 }
 
 function draw() {
+  if (showStartScreen) {
+    drawStartScreen(); // Show welcome screen
+    return;
+  }
+
   background(220);
 
   switch (gameState) {
@@ -76,7 +83,7 @@ function draw() {
       break;
 
     case "monasteryHub":
-      drawMonasteryHub(); // ✅ Monastery hub screen
+      drawMonasteryHub();
       break;
 
     case "tibetanQuiz":
@@ -90,6 +97,7 @@ function draw() {
     case "monasteryQuiz":
       drawMonasteryQuiz();
       break;
+
     case "monasteryScroll":
       drawMonasteryScroll();
       break;
@@ -102,26 +110,33 @@ function draw() {
     case "universityHub":
       drawUniversityHub();
       break;
+
     case "universityQuizA":
     case "universityQuizB":
-        drawUniversityQuiz();
-        break;
+      drawUniversityQuiz();
+      break;
+
     case "communityPrompt":
       drawMapScene();
       drawCommunityPrompt();
       break;
+
     case "communityHub":
       drawCommunityHub();
       break;
+
     case "communityScroll":
       drawCommunityScroll();
       break;
+
     case "communityQuiz":
       drawCommunityQuiz();
       break;
+
     case "communityStatsScroll":
       drawCommunityStatsScroll();
       break;
+
     case "ctaPrompt":
       drawMapScene();
       drawCTAPrompt();
@@ -131,85 +146,93 @@ function draw() {
       drawMapScene();
       drawCTANotReadyPrompt();
       break;
+
     case "ctaHub":
       drawCTAHub();
       break;
+
     case "ctaPosterTask":
       drawCTAPosterTask();
       break;
+
     case "ctaLetterTask":
       drawCTALetterTask();
       break;
-
-
-
   }
 }
 
+
 function mousePressed() {
+  // Handle Start Screen button
+   if (showStartScreen) {
+    if (inside({ x: width / 2 - 60, y: height / 2 + 100, w: 120, h: 40 })) {
+      showStartScreen = false;
+      gameState = "map"; // Start the game
+    }
+    return; // prevent processing below if still in start screen
+  }
+
+  // Handle entry prompts
   switch (gameState) {
     case "schoolPrompt":
     case "monasteryPrompt":
     case "universityPrompt":
     case "communityPrompt":
-    case "ctaPrompt":     
+    case "ctaPrompt":
     case "ctaNotReadyPrompt":
       handleEntryPromptClick();
       break;
 
+    // Hubs
     case "schoolHub":
       handleSchoolHubClick();
       break;
-
     case "monasteryHub":
       handleMonasteryHubClick();
       break;
+    case "universityHub":
+      handleUniversityHubClick();
+      break;
+    case "communityHub":
+      handleCommunityHubClick();
+      break;
+    case "ctaHub":
+      handleCTAHubClick();
+      break;
 
+    // Quizzes and Scrolls
     case "monasteryQuiz":
       handleMonasteryQuizClick();
+      break;
+    case "universityQuizA":
+    case "universityQuizB":
+      handleUniversityQuizClick();
+      break;
+    case "communityQuiz":
+      handleCommunityQuizClick();
       break;
 
     case "monasteryScroll":
       handleMonasteryScrollClick();
       break;
-
-    case "universityHub":
-      handleUniversityHubClick();
-      break;
-
-    case "universityQuizA":
-    case "universityQuizB":
-      handleUniversityQuizClick();
-      break;
-
-    case "communityHub":
-      handleCommunityHubClick();
-      break;
-
     case "communityScroll":
       handleCommunityScrollClick();
       break;
-    case "communityQuiz":
-      handleCommunityQuizClick();
-      break;
-    
     case "communityStatsScroll":
-      handleCommunityStatsScrollClick(); // Define this if needed, or reuse handleMonasteryScrollClick
+      handleCommunityStatsScrollClick();
       break;
 
-    case "ctaHub":
-      handleCTAHubClick();
-      break;
+    // CTA Tasks
     case "ctaPosterTask":
       handleCTAPosterClick();
       break;
     case "ctaLetterTask":
       handleCTALetterClick();
       break;
-
-
   }
+
 }
+
 function handleEntryPromptClick() {
   if (gameState === "ctaNotReadyPrompt") {
     gameState = "map"; // Just exit
