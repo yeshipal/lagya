@@ -2,6 +2,7 @@
 const tileSize = 64;
 const mapRows = 8;
 const mapCols = 12;
+let showStartScreen = true;
 
 // --- Game State Control ---
 let gameState = "map"; // Possible states: "map", "schoolPrompt", "schoolHub", "tibetanQuiz", "csQuiz"
