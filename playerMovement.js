@@ -33,6 +33,9 @@ function handleMovementKey(keyCode) {
   if ([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, -1].includes(nextTile)) {
     playerTile.row = newRow;
     playerTile.col = newCol;
+    if (moveSound && moveSound.isLoaded()) {
+      moveSound.play();
+    }
     checkCurrentTile();
   }
 }
@@ -66,7 +69,18 @@ function checkCurrentTile() {
   const isInCommunity = isOnBuilding(playerTile.row, playerTile.col, 2, 10); // ✅ NEW
   const isInCTA = isOnBuilding(playerTile.row, playerTile.col, 6, 0); // adjust row/col if different
 
+  const enteredBuilding = isInSchool || isInMonastery || isInUniversity || isInCommunity || isInCTA;
 
+  // Stop music if newly entered a building
+  if (enteredBuilding && !wasInSchool && startMusic && startMusic.isPlaying()) {
+    startMusic.stop();
+  }
+
+  // Resume music if exited all buildings
+  if (!enteredBuilding && wasInSchool && startMusic && !startMusic.isPlaying()) {
+    buildingMusic.stop();
+    startMusic.loop();
+  }
   // Trigger school prompt
   if (isInSchool && !wasInSchool) {
     gameState = "schoolPrompt";
@@ -99,7 +113,7 @@ function checkCurrentTile() {
 
 
   // Update state
-  wasInSchool = isInSchool || isInMonastery || isInUniversity || isInCommunity || isInCTA;
+  wasInSchool = enteredBuilding;
 }
 
 
