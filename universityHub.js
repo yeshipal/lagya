@@ -1,5 +1,11 @@
 function drawUniversityHub() {
-  background(250);
+   if (universityBgImage) {
+    tint(255, 200); // Apply 80% opacity
+    image(universityBgImage, 0, 0, width, height);
+    noTint();
+  } else {
+    background(250); // fallback color
+  }
   textAlign(CENTER, TOP);
   textSize(22);
   fill(30);
@@ -8,8 +14,8 @@ function drawUniversityHub() {
   // --- Section Labels ---
   textSize(18);
   fill(0);
-  text("Resources", 200, 70);
-  text("Learning Tracks", 500, 70);
+  text("Resources", 200, 270);
+  text("Learning Tracks", 500, 270);
 
   // --- Resource Buttons ---
   drawButton(uniResource1Btn, "📜 Digital Skills for Tibetan Youth", [160, 120, 80]);

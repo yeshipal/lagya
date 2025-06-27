@@ -1,5 +1,11 @@
 function drawSchoolHub() {
-  background(240);
+   if (schoolBgImage) {
+    tint(255, 200); // Apply 80% opacity
+    image(schoolBgImage, 0, 0, width, height);
+    noTint();
+  } else {
+    background(250); // fallback color
+  }
 
   // --- Title ---
   fill(30);
@@ -18,7 +24,7 @@ function drawSchoolHub() {
 
   // --- Section Labels ---
   textSize(18);
-  fill(0);
+  fill(255);
   text("Resources (Optional)", 200, 160);
   text("Tests (Complete to graduate)", 540, 160);
 

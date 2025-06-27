@@ -14,7 +14,13 @@ function setupPosterButtons() {
 
 
 function drawCTAHub() {
-  background(245);
+  if (ctaBgImage) {
+    tint(255, 200); // Apply 80% opacity
+    image(ctaBgImage, 0, 0, width, height);
+    noTint();
+  } else {
+    background(250); // fallback color
+  }
   textAlign(CENTER, TOP);
   textSize(22);
   fill(30);

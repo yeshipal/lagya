@@ -88,13 +88,13 @@ function checkCurrentTile() {
   }
   // Trigger CTA prompt
   else if (isInCTA && !wasInSchool) {
-    const allDone = schoolTests.tibetan && schoolTests.cs && monasteryTasks.quizPassed && universityComplete && communityTasks.quizPassed;
+   // const allDone = schoolTests.tibetan && schoolTests.cs && monasteryTasks.quizPassed && universityComplete && communityTasks.quizPassed;
 
-    if (allDone) {
+    //if (allDone) {
       gameState = "ctaPrompt";
-    } else {
-      gameState = "ctaNotReadyPrompt";
-    }
+    //} else {
+      //gameState = "ctaNotReadyPrompt";
+    //}
   }
 
 

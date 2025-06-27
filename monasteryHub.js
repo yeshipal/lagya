@@ -1,5 +1,11 @@
 function drawMonasteryHub() {
-  background(245);
+  if (monasteryBgImage) {
+      tint(255, 200); // Apply 80% opacity
+      image(monasteryBgImage, 0, 0, width, height);
+      noTint();
+    } else {
+      background(250); // fallback color
+    }
 
   // --- Title ---
   fill(30);

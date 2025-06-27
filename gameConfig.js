@@ -2,6 +2,7 @@
 const tileSize = 64;
 const mapRows = 8;
 const mapCols = 12;
+
 let showStartScreen = true;
 
 // --- Game State Control ---
@@ -65,11 +66,11 @@ let universityTasks = {
 };
 let universityComplete = false;
 // University Buttons
-const uniTraditionalBtn = { x: 360, y: 100, w: 280, h: 40 };
-const uniModernBtn = { x: 360, y: 160, w: 280, h: 40 };
-const uniResource1Btn = { x: 60, y: 100, w: 280, h: 40 };
-const uniResource2Btn = { x: 60, y: 160, w: 280, h: 40 };
-const universityExitBtn = { x: 210, y: 280, w: 280, h: 40 };
+const uniTraditionalBtn = { x: 360, y: 200, w: 280, h: 40 };
+const uniModernBtn = { x: 360, y: 260, w: 280, h: 40 };
+const uniResource1Btn = { x: 60, y: 200, w: 280, h: 40 };
+const uniResource2Btn = { x: 60, y: 260, w: 280, h: 40 };
+const universityExitBtn = { x: 210, y: 380, w: 280, h: 40 };
 
 
 //Community Buttons
@@ -77,10 +78,10 @@ let communityTasks = {
   quizPassed: false
 };
 
-const communityResourceBtn1 = { x: 60, y: 100, w: 260, h: 40 };
-const communityResourceBtn2 = { x: 60, y: 160, w: 260, h: 40 };
-const communityContributeBtn = { x: 360, y: 100, w: 260, h: 40 };
-const communityExitBtn = { x: 210, y: 280, w: 180, h: 40 };
+const communityResourceBtn1 = { x: 120, y: 200, w: 260, h: 40 };
+const communityResourceBtn2 = { x: 120, y: 260, w: 260, h: 40 };
+const communityContributeBtn = { x: 420, y: 200, w: 260, h: 40 };
+const communityExitBtn = { x: 310, y: 320, w: 180, h: 40 };
 
 let communityComplete = false;
 function inside(btn) {

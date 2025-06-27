@@ -8,9 +8,9 @@ function drawTibetanQuiz() {
 
   textSize(16);
   text("Question 1: What is the Tibetan word for 'Thank You'?", width / 2, 120);
-  text("A. བཀྲ་ཤིས་བདེ་ལེགས།", width / 2, 160);
-  text("B. ཐུགས་རྗེ་ཆེ།", width / 2, 200);
-  text("C. རྗེས་སུ་མཇལ་ཡོང་།", width / 2, 240);
+  text("A. Tashi Delek", width / 2, 160);
+  text("B. Thuk-je-che", width / 2, 200);
+  text("C. Ka-le-pe", width / 2, 240);
 
   textSize(14);
   text("Press A, B, or C to answer", width / 2, 300);
@@ -42,10 +42,10 @@ function keyPressedQuizHandler(key) {
   if (gameState === "tibetanQuiz") {
     const answer = key.toLowerCase();
     if (answer === 'b') {
-      alert("✅ Correct! 'ཐུགས་རྗེ་ཆེ།' means Thank You.");
+      alert("✅ Correct! 'Thuk-je-che' means Thank You.");
       schoolTests.tibetan = true;
     } else {
-      alert("❌ Try again. Correct answer is 'ཐུགས་རྗེ་ཆེ།'.");
+      alert("❌ Try again. Correct answer is 'Thuk-je-che'.");
     }
     gameState = "schoolHub";
 

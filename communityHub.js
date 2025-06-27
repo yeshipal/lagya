@@ -1,10 +1,21 @@
 function drawCommunityHub() {
-  background(250);
+  if (communtiyBgImage) {
+    tint(255, 200); // Apply 80% opacity
+    image(communtiyBgImage, 0, 0, width, height);
+    noTint();
+  } else {
+    background(250); // fallback color
+  }
+
   textAlign(CENTER, TOP);
   textSize(22);
   fill(30);
   text("🏘️ Welcome to the Community Center", width / 2, 30);
 
+  textSize(18);
+  fill(10);
+  text("Informational Resources", 220, 160);
+  text("Tasks to complete", 560, 160);
   // --- Left Resource Buttons ---
   drawButton(communityResourceBtn1, "📜 History of Tibetan Settlements");
   drawButton(communityResourceBtn2, "📊 Community Stats");
@@ -17,11 +28,12 @@ function drawCommunityHub() {
 
   // ✅ Completion alert (optional)
   if (communityTasks.quizPassed && !communityComplete) {
-     textSize(20);
-  fill(0, 180, 0);
-  text("✅", communityContributeBtn.x + communityContributeBtn.w - 20, communityContributeBtn.y + 20);
+    textSize(20);
+    fill(0, 180, 0);
+    text("✅", communityContributeBtn.x + communityContributeBtn.w - 20, communityContributeBtn.y + 20);
   }
 }
+
 function drawCommunityScroll() {
   const settlementText = `
 Tibetan settlements in exile began in the early 1960s after the Chinese occupation of Tibet. With the support of the Indian government and international allies, the Central Tibetan Administration coordinated the development of structured communities focused on cultural preservation, education, and livelihood.

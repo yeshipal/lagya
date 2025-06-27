@@ -8,7 +8,6 @@ function drawStartScreen() {
   } else {
     background(245); // fallback color
   }
-
   fill(30);
   textAlign(CENTER, TOP);
   textSize(28);

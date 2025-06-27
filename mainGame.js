@@ -5,9 +5,15 @@ function preload() {
     size: tileSize
   };
   
-
+  // Load sounds
+    startMusic = loadSound('assets/sounds/Techung-dranyen2.m4a');
   // Load terrain images
-  startBgImage = loadImage("assets/start-bg.png"); // or .png, depending on your file
+  startBgImage = loadImage("assets/start-bg.png");
+  schoolBgImage = loadImage("assets/backgrounds/schoolhub-bg.png");
+  monasteryBgImage = loadImage("assets/backgrounds/monasteryhub-bg.png");
+  communtiyBgImage = loadImage("assets/backgrounds/communityhub-bg.png");
+  universityBgImage = loadImage("assets/backgrounds/universityhub-bg.png");
+  ctaBgImage = loadImage("assets/backgrounds/ctahub-bg.png");
   terrainImages[terrainTypes.TREE] = loadImage("assets/tree.png");
   terrainImages[terrainTypes.MOUNTAIN] = loadImage("assets/mountain.png");
   terrainImages[terrainTypes.PATH_VERTICAL] = loadImage("assets/vertical-path.png");
@@ -166,12 +172,16 @@ function mousePressed() {
   // Handle Start Screen button
    if (showStartScreen) {
     if (inside({ x: width / 2 - 60, y: height / 2 + 100, w: 120, h: 40 })) {
+       if (startMusic && !startMusic.isPlaying()) {
+        startMusic.setVolume(0.15);
+        startMusic.loop();  // 🎵 Start music
+      }
       showStartScreen = false;
       gameState = "map"; // Start the game
     }
     return; // prevent processing below if still in start screen
   }
-
+ 
   // Handle entry prompts
   switch (gameState) {
     case "schoolPrompt":
