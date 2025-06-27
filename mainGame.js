@@ -7,6 +7,9 @@ function preload() {
   
   // Load sounds
     startMusic = loadSound('assets/sounds/Techung-dranyen2.m4a');
+    buildingMusic = loadSound('assets/sounds/Techung-piwang.m4a');
+    moveSound = loadSound('assets/sounds/Move.m4a');
+    clickSound = loadSound('assets/sounds/click.mp3');
   // Load terrain images
   startBgImage = loadImage("assets/start-bg.png");
   schoolBgImage = loadImage("assets/backgrounds/schoolhub-bg.png");
@@ -169,6 +172,8 @@ function draw() {
 
 
 function mousePressed() {
+
+  clickSound.play();
   // Handle Start Screen button
    if (showStartScreen) {
     if (inside({ x: width / 2 - 60, y: height / 2 + 100, w: 120, h: 40 })) {
@@ -247,14 +252,15 @@ function handleEntryPromptClick() {
   if (gameState === "ctaNotReadyPrompt") {
     gameState = "map"; // Just exit
   } else if (inside(yesBtn)) {
-    if (gameState === "schoolPrompt") gameState = "schoolHub";
-    else if (gameState === "monasteryPrompt") gameState = "monasteryHub";
-    else if (gameState === "universityPrompt") gameState = "universityHub";
-    else if (gameState === "communityPrompt") gameState = "communityHub";
-    else if (gameState === "ctaPrompt") gameState = "ctaHub"; // Ready for CTA hub
-  } else if (inside(noBtn)) {
-    gameState = "map";
-  }
+      buildingMusic.loop();
+      if (gameState === "schoolPrompt") gameState = "schoolHub";
+      else if (gameState === "monasteryPrompt") gameState = "monasteryHub";
+      else if (gameState === "universityPrompt") gameState = "universityHub";
+      else if (gameState === "communityPrompt") gameState = "communityHub";
+      else if (gameState === "ctaPrompt") gameState = "ctaHub"; // Ready for CTA hub
+    } else if (inside(noBtn)) {
+      gameState = "map";
+    }
 }
 
 
