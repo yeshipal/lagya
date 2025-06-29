@@ -173,19 +173,34 @@ function draw() {
 
 function mousePressed() {
 
-  clickSound.play();
   // Handle Start Screen button
    if (showStartScreen) {
-    if (inside({ x: width / 2 - 60, y: height / 2 + 100, w: 120, h: 40 })) {
-       if (startMusic && !startMusic.isPlaying()) {
-        startMusic.setVolume(0.15);
-        startMusic.loop();  // 🎵 Start music
-      }
-      showStartScreen = false;
-      gameState = "map"; // Start the game
+  const startBtn = { x: width / 2 - 60, y: height / 2 + 100, w: 120, h: 40 };
+
+  if (inside(startBtn)) {
+    // Start music if not already playing
+    if (startMusic && !startMusic.isPlaying()) {
+      startMusic.setVolume(0.15);
+      startMusic.loop();
     }
-    return; // prevent processing below if still in start screen
+    showStartScreen = false;
+    gameState = "map";
+
+    // Show welcome popup once
+    if (!hasShownWelcomePopup) {
+      showWelcomePopup = true;
+      welcomePopupTimer = millis();
+      hasShownWelcomePopup = true;
+    }
+    if (clickSound && clickSound.isLoaded()) clickSound.play();
+    return; // Stop further processing
   }
+
+  return; // Still on start screen, ignore other clicks
+}
+   const playClick = () => {
+      if (clickSound && clickSound.isLoaded()) clickSound.play();
+    };
  
   // Handle entry prompts
   switch (gameState) {
@@ -195,53 +210,67 @@ function mousePressed() {
     case "communityPrompt":
     case "ctaPrompt":
     case "ctaNotReadyPrompt":
+      playClick();
       handleEntryPromptClick();
       break;
 
     // Hubs
     case "schoolHub":
+      playClick();
       handleSchoolHubClick();
       break;
     case "monasteryHub":
+      playClick();
       handleMonasteryHubClick();
       break;
     case "universityHub":
+      playClick();
       handleUniversityHubClick();
       break;
     case "communityHub":
+      playClick();
       handleCommunityHubClick();
       break;
     case "ctaHub":
+      playClick();
       handleCTAHubClick();
       break;
 
     // Quizzes and Scrolls
     case "monasteryQuiz":
+      playClick();
       handleMonasteryQuizClick();
       break;
     case "universityQuizA":
     case "universityQuizB":
+      playClick();
       handleUniversityQuizClick();
       break;
     case "communityQuiz":
+      playClick();
       handleCommunityQuizClick();
       break;
 
     case "monasteryScroll":
+      playClick();
       handleMonasteryScrollClick();
       break;
     case "communityScroll":
+      playClick();
       handleCommunityScrollClick();
       break;
     case "communityStatsScroll":
+      playClick();
       handleCommunityStatsScrollClick();
       break;
 
     // CTA Tasks
     case "ctaPosterTask":
+      playClick();
       handleCTAPosterClick();
       break;
     case "ctaLetterTask":
+      playClick();
       handleCTALetterClick();
       break;
   }
@@ -490,6 +519,41 @@ function keyTyped() {
     } else if (letterInput.activeField === "message") {
       letterInput.message += key;
     }
+  }
+}
+function drawSpeechBubble(x, y, textContent) {
+  textSize(12);
+  textAlign(LEFT, TOP);
+  const padding = 10;
+  const maxWidth = 200;
+
+  // Calculate text box height
+  const words = textContent.split(' ');
+  let lines = [''];
+  for (let word of words) {
+    let testLine = lines[lines.length - 1] + word + ' ';
+    if (textWidth(testLine) > maxWidth - padding * 2) {
+      lines.push(word + ' ');
+    } else {
+      lines[lines.length - 1] = testLine;
+    }
+  }
+
+  const lineHeight = 18;
+  const boxHeight = lines.length * lineHeight + padding * 2;
+  const boxWidth = maxWidth;
+
+  // Draw bubble
+  fill(255, 255, 255, 175);
+  stroke(0);
+  strokeWeight(1.5);
+  rect(x, y, boxWidth, boxHeight, 10);
+
+  // Draw text
+  noStroke();
+  fill(100);
+  for (let i = 0; i < lines.length; i++) {
+    text(lines[i], x + padding, y + padding + i * lineHeight);
   }
 }
 

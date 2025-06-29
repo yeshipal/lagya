@@ -4,6 +4,10 @@ const mapRows = 8;
 const mapCols = 12;
 
 let showStartScreen = true;
+let showWelcomePopup = true;
+let welcomePopupTimer = 0;
+let hasShownWelcomePopup = false;
+
 
 // --- Game State Control ---
 let gameState = "map"; // Possible states: "map", "schoolPrompt", "schoolHub", "tibetanQuiz", "csQuiz"

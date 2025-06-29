@@ -29,13 +29,17 @@ function handleMovementKey(keyCode) {
 
   const nextTile = terrainMap[newRow][newCol];
 
-  // Allow movement to valid tiles
-  if ([2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, -1].includes(nextTile)) {
+  const walkableTiles = [2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, -1];
+
+  if (walkableTiles.includes(nextTile)) {
     playerTile.row = newRow;
     playerTile.col = newCol;
+
+    // ✅ Only play move sound on real move
     if (moveSound && moveSound.isLoaded()) {
       moveSound.play();
     }
+
     checkCurrentTile();
   }
 }

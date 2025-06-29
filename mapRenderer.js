@@ -70,6 +70,21 @@ function drawMapScene() {
 
   // Draw the character
   image(character.img, playerTile.col * tileSize, playerTile.row * tileSize, character.size, character.size);
+
+  // ✅ Draw popup if triggered and under 3 seconds
+  if (showWelcomePopup && millis() - welcomePopupTimer < 4000) {
+    const x = playerTile.col * tileSize;
+    const y = playerTile.row * tileSize;
+    drawSpeechBubble(x + 40, y - tileSize * 0.6, "བཀྲ་ཤིས་བདེ་ལེགས། Please help me explore this Tibetan exile world. Use the arrow buttons to take me across these locations.");
+    } else {
+      showWelcomePopup = false; // disable after time passes
+    }
+  // === Building Captions as Popups ===
+drawSpeechBubble(tileSize * 5, tileSize * 0.5, "མ་སུ་རི་བོད་ཁྱིམ་སློབ་གྲྭ།  Tibetan Home School, Mussoorie");       // School
+drawSpeechBubble(tileSize * 3, tileSize * 3.5, "རྣམ་རྒྱལ་གྲྭ་ཚང་ནང་ཆོས་སློབ་གཉེར་ཁང་།  Namgyal Monastery");            // Monastery
+drawSpeechBubble(tileSize * 7, tileSize * 5.5, "ཏཱ་ལའི་བླ་མ་མཐོ་རིམ་སློབ་གཉེར་ཁང་།  Dalai Lama Institute for Higher Studies");   // University
+drawSpeechBubble(tileSize * 9.5, tileSize * 1.5, "ལྡི་ལི་བསམ་ཡས་གླིང་གཞིས་ཆགས།  New Delhi Tibetan Settlement");    // Community
+drawSpeechBubble(tileSize * 0, tileSize * 5.5, "བཙན་བྱོལ་བོད་མིའི་སྒྲིག་འཛུགས།  Central Tibetan Administration, Dharamshala"); // CTA
 }
 
 /**
