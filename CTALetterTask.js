@@ -1,23 +1,27 @@
 const letterReferenceScroll = `
-📜 FACTS ABOUT TIBET:
-- Tibetans are denied basic religious freedom.
-- Thousands of political prisoners remain detained.
-- China's policies are suppressing Tibetan language and culture.
-- International solidarity can amplify Tibetan voices.
+📜 CONTEXT: DEGE ANTI-DAM PROTESTS (2024)
 
-Use this info to write a letter that reflects their situation.
+- Two senior Tibetan monks were sentenced for opposing a dam project in Dege, Kham, eastern Tibet.
+- The dam would destroy six historic monasteries and displace entire Tibetan communities.
+- Chinese police cracked down violently on peaceful protests.
+- 78-year-old Khentrul Jigme Phuntsok Rinpoche is now in critical condition.
+- This is about more than land — it's about cultural survival and spiritual freedom.
+
+👉 Your voice matters. Use this info to write a letter demanding justice and action.
 `;
 
 const letterTemplate = [
-  "Dear World Leaders,",
+  "Dear United Nations Human Rights Council,",
   "",
-  "I am writing to you because [BLANK_1] is suffering under [BLANK_2].",
-  "Every day, their right to [BLANK_3] is violated.",
-  "We urge the international community to [BLANK_4].",
+  "I am [BLANK_1], a Tibetan student in exile, deeply concerned about the events unfolding in Dege, Tibet.",
+  "The sentencing of monastic leaders like [BLANK_2] for defending their land and monasteries is a violation of our basic rights.",
+  "The planned dam project threatens to destroy [BLANK_3], which are not only buildings but symbols of Tibetan identity and faith.",
+  "We urge international bodies to [BLANK_4], and help hold the Chinese government accountable.",
   "",
   "Sincerely,",
   "[Your Name]"
 ];
+
 
 function drawCTALetterTask() {
   background(250);
@@ -32,18 +36,30 @@ function drawCTALetterTask() {
   let y = 60;
   for (let i = 0; i < letterTemplate.length; i++) {
     let line = letterTemplate[i];
+    console.log("Rendering line:", letterTemplate[i]);
 
     if (line.includes("[BLANK_")) {
-      const blankIndex = parseInt(line.match(/\[BLANK_(\d)\]/)[1]) - 1;
-      const before = line.split("[BLANK_")[0];
-      text(before, 30, y);
+      const parts = line.split(/\[BLANK_(\d)\]/g); // splits into text and index
+      let x = 30;
+      for (let j = 0; j < parts.length; j++) {
+        if (j % 2 === 0) {
+          // Regular text
+          fill(0);
+          text(parts[j], x, y);
+          x += textWidth(parts[j]);
+        } else {
+          const blankIndex = parseInt(parts[j]) - 1;
+          const input = ctaLetterTask.inputs[blankIndex] || "";
 
-      fill(255);
-      stroke(180);
-      rect(150, y - 2, 220, 20, 4);
-      fill(0);
-      noStroke();
-      text(ctaLetterTask.inputs[blankIndex], 154, y);
+          fill(255);
+          stroke(180);
+          rect(x, y - 2, 160, 20, 4);
+          fill(0);
+          noStroke();
+          text(input, x + 4, y + 2);
+          x += 164; // Advance position
+        }
+      }
     } else if (line === "[Your Name]") {
       fill(0);
       text("Tibetan Youth", 30, y);  // fixed placeholder name
@@ -61,21 +77,22 @@ function drawCTALetterTask() {
   drawButton({ x: width / 2 - 80, y: 340, w: 160, h: 40 }, "📬 Submit Letter");
 }
 function handleCTALetterClick() {
-  // Submit button
-  if (inside({ x: width / 2 - 80, y: 340, w: 160, h: 40 })) {
+  const submitBtn = { x: width / 2 - 80, y: 340, w: 160, h: 40 };
+
+  if (inside(submitBtn)) {
     if (ctaLetterTask.inputs.every(text => text.trim() !== "")) {
       alert("✅ Your letter has been submitted. Thank you for speaking up!");
       ctaTasks.letterSubmitted = true;
       gameState = "ctaHub";
 
-      // Check if both tasks are done
+      // Check if CTA mission is now complete
       if (ctaTasks.posterCreated && ctaTasks.letterSubmitted) {
         ctaTasks.complete = true;
-        // Optionally show badge or trigger mission complete message
       }
     } else {
       alert("⚠️ Please fill in all the blanks.");
     }
   }
 }
+
 

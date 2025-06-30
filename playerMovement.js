@@ -79,7 +79,6 @@ function checkCurrentTile() {
   if (enteredBuilding && !wasInSchool && startMusic && startMusic.isPlaying()) {
     startMusic.stop();
   }
-
   // Resume music if exited all buildings
   if (!enteredBuilding && wasInSchool && startMusic && !startMusic.isPlaying()) {
     buildingMusic.stop();
@@ -89,33 +88,28 @@ function checkCurrentTile() {
   if (isInSchool && !wasInSchool) {
     gameState = "schoolPrompt";
   }
-
   // Trigger monastery prompt
   else if (isInMonastery && !wasInSchool) {
     gameState = "monasteryPrompt";
   }
-
   // Trigger university prompt
   else if (isInUniversity && !wasInSchool) {
     gameState = "universityPrompt";
   }
-
   // ✅ Trigger community prompt
   else if (isInCommunity && !wasInSchool) {
     gameState = "communityPrompt";
   }
   // Trigger CTA prompt
   else if (isInCTA && !wasInSchool) {
-   // const allDone = schoolTests.tibetan && schoolTests.cs && monasteryTasks.quizPassed && universityComplete && communityTasks.quizPassed;
+    const allDone = schoolTests.tibetan && schoolTests.cs && monasteryTasks.quizPassed && universityComplete && communityTasks.quizPassed;
 
-    //if (allDone) {
+    if (allDone) {
       gameState = "ctaPrompt";
-    //} else {
-      //gameState = "ctaNotReadyPrompt";
-    //}
+    } else {
+      gameState = "ctaNotReadyPrompt";
+    }
   }
-
-
   // Update state
   wasInSchool = enteredBuilding;
 }

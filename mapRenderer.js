@@ -28,7 +28,7 @@ Are you ready to begin your journey?
   const boxH = 220;
 
   // ✅ Add translucent background box behind text
-  fill(255, 200); // white with slight transparency
+  fill(255, 175); // white with slight transparency
   noStroke();
   rect(boxX - 10, boxY - 10, boxW + 20, boxH + 20, 12); // with padding and rounded corners
 
@@ -80,11 +80,11 @@ function drawMapScene() {
       showWelcomePopup = false; // disable after time passes
     }
   // === Building Captions as Popups ===
-drawSpeechBubble(tileSize * 5, tileSize * 0.5, "མ་སུ་རི་བོད་ཁྱིམ་སློབ་གྲྭ།  Tibetan Home School, Mussoorie");       // School
-drawSpeechBubble(tileSize * 3, tileSize * 3.5, "རྣམ་རྒྱལ་གྲྭ་ཚང་ནང་ཆོས་སློབ་གཉེར་ཁང་།  Namgyal Monastery");            // Monastery
-drawSpeechBubble(tileSize * 7, tileSize * 5.5, "ཏཱ་ལའི་བླ་མ་མཐོ་རིམ་སློབ་གཉེར་ཁང་།  Dalai Lama Institute for Higher Studies");   // University
-drawSpeechBubble(tileSize * 9.5, tileSize * 1.5, "ལྡི་ལི་བསམ་ཡས་གླིང་གཞིས་ཆགས།  New Delhi Tibetan Settlement");    // Community
-drawSpeechBubble(tileSize * 0, tileSize * 5.5, "བཙན་བྱོལ་བོད་མིའི་སྒྲིག་འཛུགས།  Central Tibetan Administration, Dharamshala"); // CTA
+drawSpeechBubble(tileSize * 5, tileSize * 0.2, "མ་སུ་རི་བོད་ཁྱིམ་སློབ་གྲྭ།  Tibetan Home School, Mussoorie");       // School
+drawSpeechBubble(tileSize * 2, tileSize * 3.1, "རྣམ་རྒྱལ་གྲྭ་ཚང་ནང་ཆོས་སློབ་གཉེར་ཁང་།  Namgyal Monastery");            // Monastery
+drawSpeechBubble(tileSize * 6, tileSize * 5.2, "ཏཱ་ལའི་བླ་མ་མཐོ་རིམ་སློབ་གཉེར་ཁང་།  Dalai Lama Institute for Higher Studies");   // University
+drawSpeechBubble(tileSize * 9, tileSize * 1.2, "ལྡི་ལི་བསམ་ཡས་གླིང་གཞིས་ཆགས།  New Delhi Tibetan Settlement");    // Community
+drawSpeechBubble(tileSize * 0, tileSize * 4.9, "བཙན་བྱོལ་བོད་མིའི་སྒྲིག་འཛུགས།  Central Tibetan Administration, Dharamshala"); // CTA
 }
 
 /**

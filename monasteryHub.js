@@ -19,7 +19,7 @@ function drawMonasteryHub() {
     rect(width / 2 - 240, 70, 480, 40, 10);
     fill(0);
     textSize(18);
-    text("🎉 You passed the Tibetan Values Quiz! 🎉", width / 2, 80);
+    text("🎉 You have achieved Tibetan Values and knowledge! 🎉", width / 2, 80);
   }
 
   // --- Section Labels ---

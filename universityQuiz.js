@@ -87,13 +87,7 @@ function startUniversityQuiz(track) {
 }
 
 function drawUniversityQuiz() {
-  if (
-    !universityQuizState.selectedQuestions ||
-    universityQuizState.selectedQuestions.length === 0
-  ) {
-    console.warn("⚠️ University quiz not ready yet");
-    return;
-  }
+  
 
   const q = universityQuizState.selectedQuestions[universityQuizState.currentIndex];
 

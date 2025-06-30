@@ -1,3 +1,7 @@
+function initializeSchoolQuizzes() {
+  selectedTibetanQuestion = random(tibetanQuestions);
+  selectedCSQuestion = random(csQuestions);
+}
 function drawSchoolHub() {
    if (schoolBgImage) {
     tint(255, 200); // Apply 80% opacity
@@ -19,9 +23,8 @@ function drawSchoolHub() {
     rect(width / 2 - 220, 70, 440, 40, 10);
     fill(0);
     textSize(18);
-    text("🎉 Congratulations! You have graduated from Tibetan School. 🎉", width / 2, 80);
+    text("🎉 Congratulations! You have shown excellence at Tibetan School knowledge. 🎉", width / 2, 80);
   }
-
   // --- Section Labels ---
   textSize(18);
   fill(255);

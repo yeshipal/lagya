@@ -101,19 +101,16 @@ function shuffle(array) {
 }
 // CTA
 
-let ctaTasks = {
-  mission1: false,
-  mission2: false
-};
-
 let ctaComplete = false;
 let ctaBadgeEarned = false;
+
 // === Poster Slogan Options ===
 const sloganOptions = [
-  "Free Tibet Now",
-  "Voices from Exile",
-  "Justice for Tibet",
-  "Let Tibet Live"
+  "Tibetans Need Freedom Like All",
+  "Freedom Is a Whisper in Tibet",
+  "I Speak for Tibetans in Tibet",
+  "Human Rights is a Basic Need",
+  "Long Live the Dalai Lama"
 ];
 
 // === Finalize Button ===

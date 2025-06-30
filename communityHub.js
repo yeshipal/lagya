@@ -11,7 +11,21 @@ function drawCommunityHub() {
   textSize(22);
   fill(30);
   text("🏘️ Welcome to the Community Center", width / 2, 30);
+  // 🎖️ Show Community Torchbearer Badge if earned
+  if (communityTasks.quizPassed) {
+    // 🟨 Translucent badge background
+    fill(200, 255, 200, 200); // Light yellow with alpha
+    noStroke();
+    rect(width - 110, 20, 90, 70, 10); // x, y, w, h, rounded c
+    textSize(32);
+    textAlign(CENTER, CENTER);
+    fill(255, 140, 0);
+    text("🏅", width - 60, 50); // top-right corner
 
+    textSize(12);
+    fill(50);
+    text("Torchbearer", width - 60, 80);
+  }
   textSize(18);
   fill(10);
   text("Informational Resources", 220, 160);

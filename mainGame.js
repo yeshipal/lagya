@@ -274,12 +274,11 @@ function mousePressed() {
       handleCTALetterClick();
       break;
   }
-
 }
 
 function handleEntryPromptClick() {
   if (gameState === "ctaNotReadyPrompt") {
-    gameState = "map"; // Just exit
+    gameState = "map"; 
   } else if (inside(yesBtn)) {
       buildingMusic.loop();
       if (gameState === "schoolPrompt") gameState = "schoolHub";
@@ -292,16 +291,16 @@ function handleEntryPromptClick() {
     }
 }
 
-
-
 function handleSchoolHubClick() {
   if (inside(resourceBtn)) {
     setTimeout(() => {
       window.open("https://www.youtube.com/watch?v=2LA8cXF7RiI", "_blank", "noopener");
     }, 1);
   } else if (inside(tibetanTestBtn)) {
+    initializeSchoolQuizzes();
     gameState = "tibetanQuiz";
   } else if (inside(csTestBtn)) {
+    initializeSchoolQuizzes();
     gameState = "csQuiz";
   } else if (inside(exitBtn)) {
     gameState = "map";
@@ -458,19 +457,9 @@ function handleCommunityStatsScrollClick() {
 function handleCTAHubClick() {
   if (inside(ctaMissionBtn1)) {
     gameState = "ctaPosterTask";
-  } else if (inside(ctaMissionBtn2)) {
-    ctaTasks.mission2 = true;
-    gameState = "ctaLetterTask";
   } else if (inside(ctaExitBtn)) {
     gameState = "map";
   }
-
-  // Check if both missions complete
-  if (ctaTasks.mission1 && ctaTasks.mission2 && !ctaComplete) {
-    ctaComplete = true;
-    alert("🎖️ You are now a Tibetan Representative!\nThank you for completing your civic journey.");
-  }
-
 }
 function handleCTAPosterClick() {
   sloganButtons.forEach((btn, i) => {
@@ -485,7 +474,7 @@ function handleCTAPosterClick() {
       posterTask.selectedSlogan !== null &&
       posterTask.selectedImage !== null) {
     posterTask.finalized = true;
-    ctaTasks.posterCreated = true;
+    ctaComplete = true;
     alert("📢 Your poster is ready to share on Instagram!\n🕊️ Amplify Tibetan voices.");
     gameState = "ctaHub";
   }
@@ -502,7 +491,6 @@ function keyPressed() {
         letterInput.message = letterInput.message.slice(0, -1);
       }
     } else if (keyCode === ENTER) {
-      // Optional: Add newline to message field
       if (letterInput.activeField === "message") {
         letterInput.message += '\n';
       }
