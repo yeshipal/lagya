@@ -1,17 +1,17 @@
 let tibetanQuestions = [
   {
-    question: "What is the Tibetan word for 'Thank You'?",
-    options: ["Tashi Delek", "Thuk-je-che", "Ka-le-pe"],
+    question: "What is the meaning of 'གཞན་ཕན།'?",
+    options: ["Taking care of yourself", "Taking care of others", "Taking care of your community"],
     correct: "B"
   },
   {
-    question: "Which script is used in Tibetan writing?",
-    options: ["Devanagari", "Uchen", "Latin"],
+    question: "Which is used mean the term language?",
+    options: ["སྐད་འཕྲིན།", "སྐད་ཡིག", "སྐད་ཆ།"],
     correct: "B"
   },
   {
-    question: "What does 'Tashi Delek' mean?",
-    options: ["Good luck", "Thank you", "Hello"],
+    question: "What does 'རང་ལས་གཞན་གཅེས།' mean?",
+    options: ["Others before self", "Self before the others", "Love before greed"],
     correct: "A"
   },
   {
@@ -20,7 +20,7 @@ let tibetanQuestions = [
     correct: "B"
   },
   {
-    question: "What is Losar?",
+    question: "What is གནམ་ལོ་གསར་ཚེས།?",
     options: ["Harvest festival", "New Year", "Buddha's Birthday"],
     correct: "B"
   }
@@ -28,8 +28,8 @@ let tibetanQuestions = [
 
 let csQuestions = [
   {
-    question: "In Scratch, which block starts a program?",
-    options: ["'when green flag clicked'", "'repeat 10'", "'say Hello!'"],
+    question: "In computer science coding, which means a program?",
+    options: ["'a code block that performs a task'", "'repeated lines of code'", "'a line of code'"],
     correct: "A"
   },
   {
@@ -104,7 +104,7 @@ function keyPressedQuizHandler(key) {
 
   if (gameState === "tibetanQuiz" && selectedTibetanQuestion) {
     if (answer === selectedTibetanQuestion.correct) {
-      alert("Correct! 🎉 You’ve earned the School Badge.");
+      alert("Correct! 🎉 You’ve earned the Tibetan Badge.");
       schoolTests.tibetan = true;  // ✅ Set completion flag
       gameState = "schoolHub";
     } else {
